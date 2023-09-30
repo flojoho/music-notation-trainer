@@ -1,0 +1,149 @@
+:root {
+  --black: black;
+  --gray-dark: #222222;
+  --gray: #555555;
+  --white: white;
+  --button-height: 70px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  display: flex;
+  height: 100vh;
+  height: 100dvh;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  background-color: var(--gray-dark);
+  color: var(--white)
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100vh;
+  height: 100dvh;
+  max-height: 800px;
+  width: 100vw;
+  max-width: 800px;
+  background-color: var(--black)
+}
+nav {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  max-width: 500px;
+}
+
+a {
+  color: var(--white);
+}
+
+nav>a {
+  display: block;
+  background-color: var(--gray);
+  text-align: center;
+  height: var(--button-height);
+  line-height: var(--button-height);
+  margin: 10px 0;
+  text-decoration: none;
+  width: 100%;
+}
+
+button {
+  background-color: var(--gray);
+  font-size: 20px;
+  color: var(--white);
+  vertical-align: middle;
+  height: var(--button-height);
+}
+
+
+
+
+
+.spacing-small {
+  width: 10px;
+  height: 10px;
+}
+.spacing {
+  width: 20px;
+  height: 20px;
+}
+.spacing-big {
+  width: 30px;
+  height: 30px;
+}
+
+
+
+
+
+
+.full-width-button {
+  width: 100%;
+  border: none;
+}
+
+.back-button {
+  width: 100%;
+  padding: 10px 20px;
+}
+.back-button>a {
+  text-decoration: none;
+}
+
+
+
+
+
+.problem {
+  font-size: 100px;
+}
+
+.answer {
+  font-size: 50px;
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.number-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.number-grid {
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.number-grid > button {
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.wrong-answer {
+  background-color: rgba(255, 0, 0, 0.7);
+}
+
+.right-answer {
+  background-color: rgba(0, 255, 0, 0.4);
+}
+
+.fade-out {
+  background-color: var(--black);
+  transition: background-color 0.7s;
+}
+

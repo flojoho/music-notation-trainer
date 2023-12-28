@@ -1,15 +1,47 @@
 import Problem from './components/Problem.js';
 import Answer from './components/Answer.js';
-import statistics from './statistics.js';
 
-const [number1, number2] = statistics.getProblem();
-Problem.generate(number1, number2);
+const shuffleArray = array => {
+  let currentIndex = array.length;
+  let randomIndex;
+
+  while(currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+  }
+
+  return array;
+}
+
+const allProblems = [];
+
+Problem.letterToNumberMap.forEach((number, letter) => {
+  allProblems.push({
+    letter
+  });
+});
+shuffleArray(allProblems);
+
+const { letter } = allProblems[0];
+allProblems.shift();
+Problem.generate(letter);
+
+const startTime = performance.now();
 
 const setAnswerAndCheck = number => {
   Answer.set(number);
 
-  const [number1, number2] = statistics.getProblem();
-  Problem.checkAnswer(() => Problem.generate(number1, number2));
+  if(allProblems.length === 0) {
+    const time = Math.round(performance.now() - startTime);
+    // TODO: save score to highscore list in localstorage
+    window.location.replace(`highscores.html?score=${time}`);
+    return;
+  }
+  
+  const { letter } = allProblems[0];
+  allProblems.shift();
+  Problem.checkAnswer(() => Problem.generate(letter));
 }
 
 document.getElementById('zero').addEventListener('click', () => setAnswerAndCheck(0));

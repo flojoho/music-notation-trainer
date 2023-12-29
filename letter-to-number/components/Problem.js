@@ -25,12 +25,6 @@ let letter;
 let startTime;
 let callback = () => {};
 
-const numberToDuodecimal = number => {
-  if(0 <= number && number <= 9) return `${number}`;
-  if(number === 10) return 'a';
-  if(number === 11) return 'b';
-}
-
 const letterToNumber = letter => {
   if(typeof letter !== 'string') throw new Error('Expected string');
 

@@ -66,7 +66,9 @@ const checkAnswer = callback => {
     // statistics.addTime(letter, number2, problemDuration);
 
     callback();
+    return true;
   }
+  return false;
 }
 
 export default { generate, checkAnswer, letterToNumberMap };

@@ -35,13 +35,15 @@ const setAnswerAndCheck = number => {
   if(allProblems.length === 0) {
     const time = Math.round(performance.now() - startTime);
     // TODO: save score to highscore list in localstorage
-    window.location.replace(`highscores.html?score=${time}`);
+    window.location.replace(`../highscores.html?score=${time}`);
     return;
   }
   
   const { letter } = allProblems[0];
-  allProblems.shift();
-  Problem.checkAnswer(() => Problem.generate(letter));
+  const wasCorrect = Problem.checkAnswer(() => Problem.generate(letter));
+  if(wasCorrect) {
+    allProblems.shift();
+  }
 }
 
 document.getElementById('zero').addEventListener('click', () => setAnswerAndCheck(0));

@@ -1,5 +1,4 @@
 import Problem from './components/Problem.js';
-import Answer from './components/Answer.js';
 
 const shuffleArray = array => {
   let currentIndex = array.length;
@@ -30,8 +29,6 @@ Problem.generate(letter);
 const startTime = performance.now();
 
 const setAnswerAndCheck = number => {
-  Answer.set(number);
-
   if(allProblems.length === 0) {
     const time = Math.round(performance.now() - startTime);
     // TODO: save score to highscore list in localstorage
@@ -40,7 +37,7 @@ const setAnswerAndCheck = number => {
   }
   
   const { letter } = allProblems[0];
-  const wasCorrect = Problem.checkAnswer(() => Problem.generate(letter));
+  const wasCorrect = Problem.checkAnswer(number, () => Problem.generate(letter));
   if(wasCorrect) {
     allProblems.shift();
   }

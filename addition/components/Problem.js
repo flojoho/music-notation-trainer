@@ -1,5 +1,4 @@
 import statistics from '../statistics.js';
-import Answer from './Answer.js';
 
 const outputElement = document.getElementById('problemDiv');
 
@@ -25,14 +24,19 @@ const generate = (firstNumber, secondNumber) => {
   startTime = performance.now();
 }
 
-const checkAnswer = callback => {
+const highlight = isRight => {
+  outputElement.classList.remove('right-answer', 'wrong-answer', 'fade-out');
+  outputElement.classList.add(isRight ? 'right-answer' : 'wrong-answer');
+  setTimeout(() => outputElement.classList.add('fade-out'), 1);
+}
+
+const checkAnswer = (answer, callback) => {
+  if(typeof answer !== 'number') throw new Error('Expected number');
   if(typeof callback !== 'function') throw new Error('Expected callback function');
   
-  const answer = Answer.get();
   const isRight = answer === (number1 + number2) % 12;
 
-  Answer.set(0);
-  Answer.highlight(isRight);
+  highlight(isRight);
 
   if(isRight) {
     const problemDuration = performance.now() - startTime;

@@ -1,5 +1,4 @@
 import Problem from './components/Problem.js';
-import Answer from './components/Answer.js';
 
 const shuffleArray = array => {
   let currentIndex = array.length;
@@ -32,7 +31,6 @@ Problem.generate(number1, number2);
 const startTime = performance.now();
 
 const setAnswerAndCheck = number => {
-  Answer.set(number);
 
   if(allProblems.length === 0) {
     const time = Math.round(performance.now() - startTime);
@@ -42,7 +40,7 @@ const setAnswerAndCheck = number => {
   }
   
   const { number1, number2 } = allProblems[0];
-  const wasCorrect = Problem.checkAnswer(() => Problem.generate(number1, number2));
+  const wasCorrect = Problem.checkAnswer(number, () => Problem.generate(number1, number2));
   if(wasCorrect) {
     allProblems.shift();
   }

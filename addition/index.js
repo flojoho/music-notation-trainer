@@ -14,8 +14,8 @@ const shuffleArray = array => {
 }
 
 const allProblems = [];
-for(let number1 = 0; number1 <= 10; number1++) {
-  for(let number2 = 0; number2 <= 10; number2++) {
+for(let number1 = 0; number1 <= 11; number1++) {
+  for(let number2 = 0; number2 <= 11; number2++) {
     allProblems.push({
       number1,
       number2

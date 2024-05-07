@@ -35,7 +35,7 @@ const setAnswerAndCheck = number => {
   if(allProblems.length === 0) {
     const time = Math.round(performance.now() - startTime);
     // TODO: save score to highscore list in localstorage
-    window.location.replace(`../highscores.html?score=${time}`);
+    window.location.replace(`./results.html?score=${time}`);
     return;
   }
   

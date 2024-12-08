@@ -1,5 +1,23 @@
 import Problem from './components/Problem.js';
 
+const urlParams = new URLSearchParams(window.location.search);
+const mode = urlParams.get('mode');
+
+let clefs;
+switch (mode) {
+  case 'violin':
+    clefs = ['G'];
+    break;
+  case 'viola':
+    clefs = ['C'];
+  break;
+  case 'cello':
+    clefs = ['F'];
+    break;
+  default:
+    clefs = ['G', 'C', 'F'];
+}
+
 const shuffleArray = array => {
   let currentIndex = array.length;
   let randomIndex;
@@ -12,9 +30,6 @@ const shuffleArray = array => {
 
   return array;
 }
-
-// TODO: get possible clefs from query string
-const clefs = ['G'];
 
 const allProblems = [];
 
